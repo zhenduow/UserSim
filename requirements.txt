@@ -1,0 +1,13 @@
+deepspeed==0.8.1
+torch==1.13.1
+transformers==4.26.0
+pandas
+rouge
+rouge_score
+bert_score
+absl-py
+evaluate
+spacy
+scikit-learn
+trectools
+krovetzstemmer
