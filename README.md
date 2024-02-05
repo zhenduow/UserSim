@@ -83,6 +83,7 @@
     
 4. Run evaluations in `evaluate.ipynb`
 5. Significance test in `sigtest.py`
+6. Human evaluation instructions and results are available in `data/crowd`
     
 ## Reference
 
