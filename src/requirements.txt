@@ -13,3 +13,5 @@ trectools
 krovetzstemmer
 pydantic==1.10.9
 accelerate
+sentencepiece
+protobuf==3.19.6
