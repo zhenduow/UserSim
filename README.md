@@ -11,6 +11,8 @@
     scripts/bootstrap.sh
     ```
 
+    (Some minor errors may occur at this step.)
+
 
 ## How to use
 1. Preprocess data and generate train/val/test split with long/short cooperativeness split.
@@ -31,7 +33,7 @@
   
     ```
     cd src
-    $ deepspeed t5trainer.py \
+    deepspeed t5trainer.py \
       --deepspeed ds_config_zero3.json \
       --model_name_or_path t5-small \
       --do_train \
@@ -53,7 +55,7 @@
     ```
     
     ```
-    $ deepspeed t5trainer.py \
+    deepspeed t5trainer.py \
       --deepspeed ds_config_zero3.json \
       --model_name_or_path allenai/unifiedqa-t5-small \
       --do_train \
@@ -80,7 +82,7 @@
 3. Run document retrieval experiments using the `output_csv` from the last step. (with post-processed t5 results for example)
     ```
     cd cosearcher
-    $ python3 src/main.py --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
+    python3 src/main.py --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
     ```
     
 4. Run evaluations in `view.ipynb`
