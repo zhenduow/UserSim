@@ -12,7 +12,9 @@
 
 ## How to use
 1. Preprocess data and generate train/val/test split with long/short cooperativeness split.
+   
     `cd src`
+   
     Run `data_process.ipynb` cell [1]
     
 3. Train the RoBERTa classifier for answer type prediction.
