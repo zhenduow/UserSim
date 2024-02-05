@@ -1,0 +1,19 @@
+deepspeed t5trainer.py \
+    --deepspeed ds_config_zero3.json \
+    --model_name_or_path google-t5/t5-small \
+    --do_train \
+    --do_eval \
+    --do_predict \
+    --source_prefix "answer: " \
+    --output_dir output/t5-qulac \
+    --per_device_train_batch_size=4 \
+    --per_device_eval_batch_size=4 \
+    --overwrite_output_dir \
+    --predict_with_generate \
+    --text_column t5-question \
+    --summary_column answer \
+    --seed 2023 \
+    --num_train_epochs 3 \
+    --train_file ../data/processed/qulac_train.csv \
+    --validation_file ../data/processed/qulac_dev.csv \
+    --test_file ../data/processed/qulac_test.csv 
