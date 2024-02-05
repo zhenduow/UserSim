@@ -11,6 +11,8 @@
     scripts/bootstrap.sh
     ```
 
+    (Some minor errors may occur at this step.)
+
 
 ## How to use
 1. Preprocess data and generate train/val/test split with long/short cooperativeness split.
