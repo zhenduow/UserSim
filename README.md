@@ -11,21 +11,19 @@
 
 
 ## How to use
-0. Train the RoBERTa classifier for answer type prediction.
-    ```
-    $ cd src
-    $ python3 roberta.py
-    ``` 
+1. Preprocess data and generate train/val/test split with long/short cooperativeness split.
+
+    Run `t5.ipynb` cell [1]
     
+3. Train the RoBERTa classifier for answer type prediction.
+   
+    Run `t5.ipynb` cell [2] and [3]
+
+5. Predict answer type with trained RoBERTa classifier.
     
-2. Preprocess data and generate train/val/test split with long/short cooperativeness split.
-    ```
-    $ cd src
-    $ python3 gen_qulac_data.py
-    $ python3 gen_clariq_data.py
-    ```
+    Run `t5.ipynb` cell [4]
     
-2. Finetune T5 and UnifiedQA (with Qulac split for example) 
+3. Finetune T5 and UnifiedQA (on Qulac for example) 
   
     ```
     cd src
@@ -45,9 +43,9 @@
       --summary_column answer \
       --seed 2023 \
       --num_train_epochs 30 \
-      --train_file qulac_train.csv \
-      --validation_file qulac_dev.csv \
-      --test_file qulac_dev.csv \
+      --train_file ../data/processed/qulac_train.csv \
+      --validation_file ../data/processed/qulac_dev.csv \
+      --test_file ../data/processed/qulac_test.csv 
     ```
     
     ```
@@ -58,7 +56,7 @@
       --do_eval \
       --do_predict \
       --source_prefix "" \
-      --output_dir output/unifiedqa-small-clariq/ \
+      --output_dir output/unifiedqa-small-qulac/ \
       --per_device_train_batch_size=64 \
       --per_device_eval_batch_size=64 \
       --overwrite_output_dir \
@@ -67,16 +65,16 @@
       --summary_column answer \
       --seed 2023 \
       --num_train_epochs 30 \
-      --train_file qulac_train.csv \
-      --validation_file qulac_dev.csv \
-      --test_file qulac_test.csv \
+      --train_file ../data/processed/qulac_train.csv \
+      --validation_file ../data/processed/qulac_dev.csv \
+      --test_file ../data/processed/qulac_test.csv 
 
     ```
 
 3. Run document retrieval experiments. (with post-processed t5 results for example)
     ```
     cd cosearcher
-    $ python3 src/main.py --output_file_path ../src/output/t5-small-qulac-full.csv > ../src/output/t5-small-qulac-full.json
+    $ python3 src/main.py --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
     ```
     
 4. Run evaluations in `view.ipynb`
