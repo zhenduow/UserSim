@@ -17,15 +17,15 @@
    
     `cd src`
    
-    Run `data_process.ipynb` [cell 1](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb#L10)
+    Run `data_process.ipynb` [cell 1](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb)
     
 3. Train the RoBERTa classifier for answer type prediction.
    
-    Run `data_process.ipynb` [cell 2](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb#L100) and [3]
+    Run `data_process.ipynb` [cell 2](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb) and [cell 3](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb)
 
 5. Predict answer type with trained RoBERTa classifier.
     
-    Run `data_process.ipynb` cell [4]
+    Run `data_process.ipynb` [cell 4](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb)
     
 3. Finetune T5 and UnifiedQA (on Qulac for example) 
   
