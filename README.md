@@ -1,4 +1,4 @@
-# Code for An In-depth Investigation of User Response Simulation for Conversational Search
+# An In-depth Investigation of User Response Simulation for Conversational Search
 
 ## Package requirements (recommended versions).
 1. python==3.8
