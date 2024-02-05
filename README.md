@@ -33,7 +33,7 @@
   
     ```
     cd src
-    $ deepspeed t5trainer.py \
+    deepspeed t5trainer.py \
       --deepspeed ds_config_zero3.json \
       --model_name_or_path t5-small \
       --do_train \
@@ -55,7 +55,7 @@
     ```
     
     ```
-    $ deepspeed t5trainer.py \
+    deepspeed t5trainer.py \
       --deepspeed ds_config_zero3.json \
       --model_name_or_path allenai/unifiedqa-t5-small \
       --do_train \
