@@ -77,7 +77,7 @@
 4. Process the generated responses from LMs and save it to csv for evaluation.
 
    Run `data_process.ipynb` [cell 5](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb) with the `test_file` and `output_dir` from the last step.
-3. Run document retrieval experiments. (with post-processed t5 results for example)
+3. Run document retrieval experiments using the `output_csv` from the last step. (with post-processed t5 results for example)
     ```
     cd cosearcher
     $ python3 src/main.py --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
