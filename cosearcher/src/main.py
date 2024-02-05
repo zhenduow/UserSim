@@ -32,8 +32,7 @@ import thirdparty.ql as ql
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--qrel", default="data/faceted.qrel")
-    #parser.add_argument("--dataset", type=pathlib.Path, default="../data/qulac/qulac.test.json")
-    parser.add_argument("--dataset", type=pathlib.Path, default="../data/clariq/clariq.dev.json")
+    parser.add_argument("--dataset", type=str, default="qulac")
     parser.add_argument("--seed", type=int, default = 42)
     parser.add_argument("--epochs", type=int, default=1)
 
@@ -95,7 +94,7 @@ if __name__ == "__main__":
         random.seed(args.seed)
         np.random.seed(args.seed)
 
-    dataset = qulac.Qulac(args.dataset.open())
+    dataset = qulac.Qulac("../data/clariq/clariq.dev.json".open() if args.dataset == 'clariq' else "../data/qulac/qulac.test.json".open())
 
     matcher = {}
     for which in ["user", "clarify"]:
