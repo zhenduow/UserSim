@@ -74,7 +74,9 @@
       --test_file ../data/processed/qulac_test.csv 
 
     ```
+4. Process the generated responses from LMs and save it to csv for evaluation.
 
+   Run `data_process.ipynb` [cell 5](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb) with the `test_file` and `output_dir` from last step.
 3. Run document retrieval experiments. (with post-processed t5 results for example)
     ```
     cd cosearcher
