@@ -1,0 +1,330 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<!-- For help on using this template, see the blog post: https://blog.mturk.com/editing-the-survey-link-project-template-in-the-ui-7c75285105fb#.py7towsdx --><!-- HIT template: SurveyLink-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="SurveyLink"><!-- Instructions -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary">
+<!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature -->
+<a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Task Instructions</strong> <span class="collapse-text">(Please read them carefully or your submissions may get rejected.)</span> </a>
+<div class="panel-body" id="instructionBody">
+    
+    <p style="color:red;"><b>Note: If you have done this task earlier, we have changed the instructions for this batch. 
+    So please make sure to read the instructions.</b></p>
+    
+    <p>In this task, imagine a user who wants to find information online and unintentionally asks a search system (like Google or Siri) an ambiguous search query. 
+    To better understand their (unspecified) search intention, the system asks a clarifying question.</p>
+    
+    <p><u>For example</u>, a user may be looking for an anti-spyware program called Defender and may ask <i>"Tell me about defender"</i>. 
+    However, the query is ambiguous: the word "defender" may refer to many things: a TV series ‘The Defender’, a vehicle named ‘Defender’ and so on.</p>
+    
+    <p> Perhaps the system may guess that the user is looking for the TV series, and asks: <i>"Are you interested in a television series?"</i></p> 
+      
+    <p> Now, the user may answer the question in many ways. 
+    It can be as simple as <i>“No.”</i> or a longer <i>“No, I am looking for the computer program Defender.”</i> depending on the user’s personal preferences.</p> 
+     
+    <p> <b>The goal of this task</b> is to evaluate the relevance and naturalness of answers to these clarifying questions. 
+    You will be given the (possibly ambiguous) search query, the user’s search intent (which is invisible to the search system) and the clarifying question. 
+    For each question, you will receive a few user responses which may or may not answer the question.
+    </p>
+    
+    <u>Your goal is to assign Naturalness and Relevance scores (in the range 1-5) for each answer.</u>
+      
+    <h2> Relevance </h2>
+    
+    <p> The Relevance of an answer measures whether the answer is aligned with the user’s search intent. 
+    <b>In other words, it helps the search system better understand the user’s unspecified intention. </b>
+    An answer that is perfectly aligned with the intent should receive a relevance score of 5. 
+    An answer that contradicts the search intent or discusses unrelated topics should receive a relevance score 1.
+    </p>
+      
+    <p><u>In the above example</u>, both <i>“No.”</i> and <i>“No, I am looking for the computer program Defender.”</i> perfectly capture the user’s unspecified intention and should receive a relevance score of 5. 
+    Answers such as <i>“Yes.”</i>, <i>“I am interested in the television series.”</i> or <i>“I didnt know defender was a TV series”</i> should receive a relevance score of 1 because they have no connection to the user’s original search intent (i.e. the anti-spyware program).
+    </p>
+      
+      <h2> Naturalness </h2>
+      <p> The Naturalness of an answer rates whether the answer is fluent, grammatical, and human-like. 
+      A perfectly natural answer could have been written by a reasonably fluent English speaker, and does not provide information beyond what the question is asking for. 
+      Such answers would receive a naturalness score of 5. 
+      An unnatural answer might have logical errors in them, or perhaps be impossible to understand. 
+      Such answers would receive a naturalnes score of 1.
+      </p>
+      
+      <p> <u>In the above example</u>, both <i>“No.”</i> and <i>“No, I am looking for the computer program Defender.”</i> would  receive a naturalness score of 5. 
+      Answers such as <i>“Yes, I am looking for the computer program.”</i> or <i>“No, I am looking for the television series”</i> would receive naturalness scores of 1. 
+      Recall that the user wants to find a computer program and the search system asked if they were looking for a television series, and no reasonable user would have written the above answers. 
+      </p> 
+      
+      <p> Note that while the answer <i>“Yes, I am looking for the computer program.”</i> is not natural, it can help the search system understand the user’s intent and would receive a high relevance score. </p> 
+      <p> In terms of grammatical, please ignore mistakes caused by cases and "'", for example, do not take points off for using "im" for "I'm". </p>
+        
+        <h2>Differences between Relevance and Naturalness</h2>
+        <p> Note that relevance and naturalness are not dependent. </p>
+        <p> If an answer is aligned with the user's search intent, but does not answer what the question is asking for, then it is relevant but not natural. </p>
+        <p> If an answer is a possible answer for the clarifying question, but contradicts the user's search intent, then it is natural but irrelevant. For example, for a yes-no question, both yes or no could be natural, but at least one of them must be irrelevant.</p>
+        
+      <h2> Examples </h2>
+      <p>Here are some examples with explanations:</p>
+      <p><b><u>Example 1:</u></b> The clarifying question matches the search intent</p>
+      <ul>
+            <p><b>Search intent: </b>"Anti-spyware program Defender"</p>
+            
+            <p><b>User Query:</b> "Tell me about defender"</p>
+            
+            <p><b>Clarifying question:</b> “Are you interested in the software Defender"</p>
+            
+            <p><b>✔ Good answers:</b></p>
+            <ul>
+                  <li>“Yes”</li>
+                  <li>“Yes, that is what I need”</li> 
+                  <li>“The anti-spyware program” </li> 
+            </ul>
+            
+            <p><b>✘ Bad answers:</b></p>
+            <ul>
+                  <li>“No” <i>(Explanation: This answer contradicts with the user's search intent, so it is bad because it has low relevance. However, it is actually natural because it can be otherwise true.)</i></li>
+                  <li>“I don’t know”  <i>(Explanation: This is neither relevant nor natural, because the user should know and answer “yes”)</i></li> 
+            </ul>
+      </ul>
+      
+      <p><b><u>Example 2:</u></b> The clarifying question is relevant but does not match the search intent</p>
+      <ul>
+            <p><b>Search intent:</b> "anti-spyware program Defender"</p>
+            
+            <p><b>User Query:</b> "Tell me about defender"</p>
+            
+            <p><b>Clarifying question:</b> "are you interested in the television series Defender"</p>
+            
+            <p><b>✔ Good answers:</b></p>
+            <ul>
+                  <li>“No”</li> 
+                  <li>“No that is not what I am looking for”</li> 
+                  <li>“No i want troubleshooting information for windows defender the software”</li> 
+            </ul>
+            
+            <p><b>✘ Bad answers:</b></p>
+            <ul>
+                  <li>“Yes, that is what I want” <i>(Explanation: No, it is not what the user wants, it contradicts with the search intent. It is natural but not relevant)</i></li>
+                  <li>“I don’t know”  <i>(Explanation: Because the user should know it. This is neither natural nor relevant)</i></li> 
+            </ul>
+      </ul>
+      
+            
+      <p><b><u>Example 3:</u></b> The clarifying question is not a well-formed clarifying question</p>
+      <ul>
+            <p><b>Search Intent:</b> "Find vendors that sell computer memory upgrades."</p>
+            
+            <p><b>User Query:</b> "memory"</p> 
+            
+            <p><b>Clarifying question:</b> “who was the first to study the brain and memory” </p>
+      
+            <i>Note that the clarifying question is irrelevant to the user’s query.</i>
+            
+            <p><b>✔ Good answers:</b></p>
+            <ul>
+                  <li>“It is not related to my search”</li>
+                  <li>"I don’t know”</li> 
+                  <li>“Don’t ask me”</li> 
+            </ul>
+            
+            <p><b>✘ Bad answers:</b></p>
+            <ul>
+                  <li>“Hermann Ebbinghaus” <i>(Explanation:  literally answering the question asked by the system. This is bad because it is unnatural to do so when the user is the one searching for information.) </i></li> 
+                  <li>“Yes”/“No” <i>(Explanation: yes or no cannot be used to answer these questions)</i></li> 
+            </ul>
+      </ul>
+</div>
+</div>
+</div>
+</div>
+<!-- End Instructions --><!-- Survey Link Layout --><!-- End Content for Worker --><!-- Input from Worker -->
+
+<!-- End Instructions --><!-- Survey Link Layout --><!-- End Content for Worker --><!-- Input from Worker -->
+
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form>
+    
+<p><b> >>>>>>>>>>>>>>>>>> Your task starts here. <<<<<<<<<<<<<<<<<< </b></p> 
+            <p>Now, please imagine the following search scenario and score Answer 1~4 in terms of their relevance and naturalness in the range of 1-5. </p>
+            <p>One of the answers always copies user's search intent. 
+            In terms of relevance, it is perfect. 
+            However, it may not serve as the most natural answer to the clarifying question.
+            <b> So, please rate its relevance and naturalness carefully, because it will be used for attention check on your works!</b></p>
+            
+            <p>Also, sometimes two answers can be the same, make sure to give the same scores if that happens. 
+            Consider 'I want to find X', 'I am interested in X', and 'I am looking for X' as the same answers.</p>
+            <ul>
+                <br>
+                
+                <p><b>Search Intent (what the user really wants, but unseen by the search system):</b> ${facet} </p>
+                <p><b>User Query (what the user types into the search system):</b> ${query}  </p>
+                <p><b>Clarifying Question (asked by the search system):</b> ${question}</p> 
+                
+                <br>
+                
+                <p><b>Answer 1:</b> ${answer1}</p> 
+                <p><b>Answer 2:</b> ${answer2}</p> 
+                <p><b>Answer 3:</b> ${answer3}</p> 
+                <p><b>Answer 4:</b> ${answer4}</p>
+                
+                <br>
+                
+                
+                <p><u><b>Relevance</b></u> of <b>Answer 1</b> to the user's "Search intent"</p>
+                <ul>
+                  <input type="radio" name="ans1rel" id="ans1rel1" value="ans1rel1" required>
+                  <label for="ans1rel1">1</label>&emsp;
+                  <input type="radio" name="ans1rel" id="ans1rel2" value="ans1rel2">
+                  <label for="ans1rel2">2</label>&emsp;
+                  <input type="radio" name="ans1rel" id="ans1rel3" value="ans1rel3">
+                  <label for="ans1rel3">3</label>&emsp;
+                  <input type="radio" name="ans1rel" id="ans1rel4" value="ans1rel4">
+                  <label for="ans1rel4">4</label>&emsp;
+                  <input type="radio" name="ans1rel" id="ans1rel5" value="ans1rel5">
+                  <label for="ans1rel5">5</label>
+                </ul>
+            	
+                <p><u><b>Naturalness</b></u> of <b>Answer 1</b> to the "Clarifying Question"</p>
+                <ul>
+                  <input type="radio" name="ans1nat" id="ans1nat1" value="ans1nat1" required>
+                  <label for="ans1nat1">1</label>&emsp;
+                  <input type="radio" name="ans1nat" id="ans1nat2" value="ans1nat2">
+                  <label for="ans1nat2">2</label>&emsp;
+                  <input type="radio" name="ans1nat" id="ans1nat3" value="ans1nat3">
+                  <label for="ans1nat3">3</label>&emsp;
+                  <input type="radio" name="ans1nat" id="ans1nat4" value="ans1nat4">
+                  <label for="ans1nat4">4</label>&emsp;
+                  <input type="radio" name="ans1nat" id="ans1nat5" value="ans1nat5">
+                  <label for="ans1nat5">5</label>
+          
+                </ul>
+                <p><u><b>Relevance</b></u> of <b>Answer 2</b> to the user's "Search intent"</p>
+                <ul>
+            	
+                  <input type="radio" name="ans2rel" id="ans2rel1" value="ans2rel1" required>
+                  <label for="ans2rel1">1</label>&emsp;
+                  <input type="radio" name="ans2rel" id="ans2rel2" value="ans2rel2">
+                  <label for="ans2rel2">2</label>&emsp;
+                  <input type="radio" name="ans2rel" id="ans2rel3" value="ans2rel3">
+                  <label for="ans2rel3">3</label>&emsp;
+                  <input type="radio" name="ans2rel" id="ans2rel4" value="ans2rel4">
+                  <label for="ans2rel4">4</label>&emsp;
+                  <input type="radio" name="ans2rel" id="ans2rel5" value="ans2rel5">
+                  <label for="ans2rel5">5</label>
+
+                </ul>
+                <p><u><b>Naturalness</b></u> of <b>Answer 2</b> to the "Clarifying Question"</p>
+                <ul>
+            	
+                  <input type="radio" name="ans2nat" id="ans2nat1" value="ans2nat1" required>
+                  <label for="ans2nat1">1</label>&emsp;
+                  <input type="radio" name="ans2nat" id="ans2nat2" value="ans2nat2">
+                  <label for="ans2nat2">2</label>&emsp;
+                  <input type="radio" name="ans2nat" id="ans2nat3" value="ans2nat3">
+                  <label for="ans2nat3">3</label>&emsp;
+                  <input type="radio" name="ans2nat" id="ans2nat4" value="ans2nat4">
+                  <label for="ans2nat4">4</label>&emsp;
+                  <input type="radio" name="ans2nat" id="ans2nat5" value="ans2nat5">
+                  <label for="ans2nat5">5</label>
+          
+            	
+                </ul>
+                <p><u><b>Relevance</b></u> of <b>Answer 3</b> to the user's "Search intent"</p>
+                <ul>
+                
+                  <input type="radio" name="ans3rel" id="ans3rel1" value="ans3rel1" required>
+                  <label for="ans3rel1">1</label>&emsp;
+                  <input type="radio" name="ans3rel" id="ans3rel2" value="ans3rel2">
+                  <label for="ans3rel2">2</label>&emsp;
+                  <input type="radio" name="ans3rel" id="ans3rel3" value="ans3rel3">
+                  <label for="ans3rel3">3</label>&emsp;
+                  <input type="radio" name="ans3rel" id="ans3rel4" value="ans3rel4">
+                  <label for="ans3rel4">4</label>&emsp;
+                  <input type="radio" name="ans3rel" id="ans3rel5" value="ans3rel5">
+                  <label for="ans3rel5">5</label>
+            	
+                </ul>
+                <p><u><b>Naturalness</b></u> of <b>Answer 3</b> to the "Clarifying Question"</p>
+                <ul>
+                
+                  <input type="radio" name="ans3nat" id="ans3nat1" value="ans3nat1" required>
+                  <label for="ans3nat1">1</label>&emsp;
+                  <input type="radio" name="ans3nat" id="ans3nat2" value="ans3nat2">
+                  <label for="ans3nat2">2</label>&emsp;
+                  <input type="radio" name="ans3nat" id="ans3nat3" value="ans3nat3">
+                  <label for="ans3nat3">3</label>&emsp;
+                  <input type="radio" name="ans3nat" id="ans3nat4" value="ans3nat4">
+                  <label for="ans3nat4">4</label>&emsp;
+                  <input type="radio" name="ans3nat" id="ans3nat5" value="ans3nat5">
+                  <label for="ans3nat5">5</label>
+          
+                </ul>
+                
+                
+                <p><u><b>Relevance</b></u> of <b>Answer 4</b> to the user's "Search intent"</p>
+                <ul>
+                
+                  <input type="radio" name="ans4rel" id="ans4rel1" value="ans4rel1" required>
+                  <label for="ans4rel1">1</label>&emsp;
+                  <input type="radio" name="ans4rel" id="ans4rel2" value="ans4rel2">
+                  <label for="ans4rel2">2</label>&emsp;
+                  <input type="radio" name="ans4rel" id="ans4rel3" value="ans4rel3">
+                  <label for="ans4rel3">3</label>&emsp;
+                  <input type="radio" name="ans4rel" id="ans4rel4" value="ans4rel4">
+                  <label for="ans4rel4">4</label>&emsp;
+                  <input type="radio" name="ans4rel" id="ans4rel5" value="ans4rel5">
+                  <label for="ans4rel5">5</label>
+            	
+                </ul>
+                <p><u><b>Naturalness</b></u> of <b>Answer 4</b> to the "Clarifying Question"</p>
+                <ul>
+                
+                  <input type="radio" name="ans4nat" id="ans4nat1" value="ans4nat1" required>
+                  <label for="ans4nat1">1</label>&emsp;
+                  <input type="radio" name="ans4nat" id="ans4nat2" value="ans4nat2">
+                  <label for="ans4nat2">2</label>&emsp;
+                  <input type="radio" name="ans4nat" id="ans4nat3" value="ans4nat3">
+                  <label for="ans4nat3">3</label>&emsp;
+                  <input type="radio" name="ans4nat" id="ans4nat4" value="ans4nat4">
+                  <label for="ans4nat4">4</label>&emsp;
+                  <input type="radio" name="ans4nat" id="ans4nat5" value="ans4nat5">
+                  <label for="ans4nat5">5</label>
+          
+                </ul>
+            </ul>
+    <br>
+    <div>
+    <b>Is the instruction easy to follow? Please give us your feedback!</b>
+    <br>
+    <input type="text" id="feedbak" name="feedback" placeholder="Your feedback (optional)" size = 64>
+</div>
+    <br>
+</crowd-form>
+
+</section>
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" /><!-- Open internal style sheet -->
+<style type="text/css">#collapseTrigger{
+  color:#fff;
+  display: block;
+  text-decoration: none;
+}
+#submitButton{
+  white-space: normal;
+}
+.image{
+  margin-bottom: 15px; 
+}
+/* CSS for breaking long words/urls */
+.dont-break-out {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+</style>
