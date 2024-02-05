@@ -80,14 +80,16 @@
 
    Run `data_process.ipynb` [cell 5](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb) with the `test_file` and `output_dir` from the last step.
 3. Run document retrieval experiments using the `output_csv` from the last step. (with post-processed t5 results for example)
+
     ```
     cd cosearcher
-    python3 src/main.py --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
+    python3 src/main.py --dataset qulac --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
     ```
+   Make sure to change `dataset` to clariq for document retrieval experiments on ClariQ.
     
-4. Run evaluations in `view.ipynb`
-5. Significance test in `sigtest.py`
-6. Human evaluation instructions and results are available in `data/crowd`
+5. Run evaluations in `view.ipynb`
+6. Significance test in `sigtest.py`
+7. Human evaluation instructions and results are available in `data/crowd`
     
 ## Reference
 
