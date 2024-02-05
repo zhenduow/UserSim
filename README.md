@@ -17,7 +17,7 @@
    
     `cd src`
    
-    Run `data_process.ipynb` cell [1]
+    Run `data_process.ipynb` cell [1](https://github.com/zhenduow/UserSim/blob/main/src/data_process.ipynb#L10)
     
 3. Train the RoBERTa classifier for answer type prediction.
    
