@@ -13,15 +13,15 @@
 ## How to use
 1. Preprocess data and generate train/val/test split with long/short cooperativeness split.
 
-    Run `t5.ipynb` cell [1]
+    Run `data_process.ipynb` cell [1]
     
 3. Train the RoBERTa classifier for answer type prediction.
    
-    Run `t5.ipynb` cell [2] and [3]
+    Run `data_process.ipynb` cell [2] and [3]
 
 5. Predict answer type with trained RoBERTa classifier.
     
-    Run `t5.ipynb` cell [4]
+    Run `data_process.ipynb` cell [4]
     
 3. Finetune T5 and UnifiedQA (on Qulac for example) 
   
