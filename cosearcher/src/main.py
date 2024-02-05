@@ -32,8 +32,8 @@ import thirdparty.ql as ql
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--qrel", default="data/faceted.qrel")
-    #parser.add_argument("--dataset", type=pathlib.Path, default="data/qulac.test.json")
-    parser.add_argument("--dataset", type=pathlib.Path, default="data/clariq.dev.json")
+    #parser.add_argument("--dataset", type=pathlib.Path, default="../data/qulac/qulac.test.json")
+    parser.add_argument("--dataset", type=pathlib.Path, default="../data/clariq/clariq.dev.json")
     parser.add_argument("--seed", type=int, default = 42)
     parser.add_argument("--epochs", type=int, default=1)
 
