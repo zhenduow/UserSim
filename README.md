@@ -82,7 +82,7 @@
 3. Run document retrieval experiments using the `output_csv` from the last step. (with post-processed t5 results for example)
     ```
     cd cosearcher
-    $ python3 src/main.py --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
+    python3 src/main.py --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
     ```
     
 4. Run evaluations in `view.ipynb`
