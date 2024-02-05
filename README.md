@@ -4,6 +4,8 @@
 1. python==3.8
 2. `pip install -r src/requirements.txt`
 3. Download data
+
+   This repo contains a modified version of [CoSearcher](https://github.com/amzn/cosearcher). 
     ```
     cd cosearcher
     scripts/bootstrap.sh
