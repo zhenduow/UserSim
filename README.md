@@ -83,7 +83,7 @@
     $ python3 src/main.py --output_file_path ../src/output/t5-small-qulac.csv > ../src/output/t5-small-qulac.json
     ```
     
-4. Run evaluations in `evaluate.ipynb`
+4. Run evaluations in `view.ipynb`
 5. Significance test in `sigtest.py`
 6. Human evaluation instructions and results are available in `data/crowd`
     
