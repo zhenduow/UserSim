@@ -94,6 +94,7 @@
 ## Reference
 
 Please cite the following work if you use this code repository in your work:
+```
 @misc{wang2024indepth,
       title={An In-depth Investigation of User Response Simulation for Conversational Search}, 
       author={Zhenduo Wang and Zhichao Xu and Qingyao Ai and Vivek Srikumar},
@@ -102,3 +103,4 @@ Please cite the following work if you use this code repository in your work:
       archivePrefix={arXiv},
       primaryClass={cs.IR}
 }
+```
