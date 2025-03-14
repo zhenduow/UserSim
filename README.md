@@ -95,12 +95,11 @@
 
 Please cite the following work if you use this code repository in your work:
 ```
-@misc{wang2024indepth,
-      title={An In-depth Investigation of User Response Simulation for Conversational Search}, 
-      author={Zhenduo Wang and Zhichao Xu and Qingyao Ai and Vivek Srikumar},
-      year={2024},
-      eprint={2304.07944},
-      archivePrefix={arXiv},
-      primaryClass={cs.IR}
+@inproceedings{wang2024depth,
+  title={An in-depth investigation of user response simulation for conversational search},
+  author={Wang, Zhenduo and Xu, Zhichao and Srikumar, Vivek and Ai, Qingyao},
+  booktitle={Proceedings of the ACM Web Conference 2024},
+  pages={1407--1418},
+  year={2024}
 }
 ```
